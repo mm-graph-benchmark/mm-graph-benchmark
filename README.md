@@ -25,7 +25,7 @@ pip install pandas numpy scikit-learn
 
 # Data Preparation
 
-Download our datasets from this link. You may save them to any directory you like, such as `./Multimodal-Graph-Completed-Graph`. The structure should look like the following tree diagram. You can easily add new datasets following this format.
+Download our datasets from [this link](https://huggingface.co/datasets/mm-graph-org/mm-graph). You may save them to any directory you like, such as `./Multimodal-Graph-Completed-Graph`. The structure should look like the following tree diagram. You can easily add new datasets following this format.
 
 ```bash
 .
