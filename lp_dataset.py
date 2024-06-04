@@ -55,7 +55,7 @@ class LinkPredictionDataset(object):
         return '{}({})'.format(self.__class__.__name__, len(self))
     
 
-
+# borrowed from OGB
 class LinkPredictionEvaluator(object):
     def __init__(self):
         """
