@@ -1,0 +1,114 @@
+defaults:
+  # - override hydra/launcher: submitit_slurm
+  - _self_
+
+# Configuration Settings for Efficient Link Prediction with Hashes (ELPH)
+dataset_name: "Cora"
+val_pct: 0.1
+test_pct: 0.2
+preprocessing: null
+sign_k: 1
+load_features: False
+load_hashes: False
+cache_subgraph_features: True
+year: 0
+
+# GNN Settings
+model: "BUDDY"
+hidden_channels: 1024
+batch_size: 512
+eval_batch_size: 50000
+label_dropout: 0.5
+feature_dropout: 0.5
+sign_dropout: 0.5
+save_model: False
+feature_prop: "gcn"
+
+# SEAL Settings
+dropout: 0.5
+num_seal_layers: 3
+sortpool_k: 0.6
+label_pooling: "add"
+seal_pooling: "edge"
+
+# Subgraph Settings
+num_hops: 1
+ratio_per_hop: 1.0
+max_nodes_per_hop: null
+node_label: "drnl"
+max_dist: 4
+max_z: 1000
+use_feature: True
+use_struct_feature: True
+use_edge_weight: False
+feat: "imagebind"
+
+# Training Settings
+lr: 0.0001
+weight_decay: 0
+epochs: 30
+num_workers: 4
+num_negs: 1
+train_node_embedding: False
+propagate_embeddings: False
+loss: "bce"
+add_normed_features: False
+use_RA: False
+
+# SEAL Specific Arguments
+dynamic_train: False
+dynamic_val: False
+dynamic_test: False
+pretrained_node_embedding: null
+
+# Testing Settings
+reps: 3
+use_valedges_as_input: False
+eval_steps: 5
+log_steps: 1
+eval_metric: "hits"
+K: 100
+
+# Hash Settings
+use_zero_one: False
+floor_sf: False
+hll_p: 8
+minhash_num_perm: 128
+max_hash_hops: 2
+subgraph_feature_batch_size: 11000000
+
+# Weights & Biases (wandb) Settings
+wandb: False
+wandb_offline: False
+wandb_sweep: False
+wandb_watch_grad: False
+wandb_track_grad_flow: False
+wandb_entity: "link-prediction"
+wandb_project: "link-prediction"
+wandb_group: "testing"
+wandb_run_name: null
+wandb_output_dir: "./wandb_output"
+wandb_log_freq: 1
+wandb_epoch_list:
+  - 0
+  - 1
+  - 2
+  - 4
+  - 8
+  - 16
+log_features: False
+
+hydra:
+  job:
+    chdir: True
+  # launcher:
+  #   name: 'gnn'
+  #   timeout_min: 4320
+  #   cpus_per_task: 4
+  #   gres: 'gpu:1'
+  #   tasks_per_node: 1
+  #   mem_per_cpu: 10000
+  #   partition: 'spgpu'
+  #   account: 'dkoutra1'
+  #   array_parallelism: 3 # limit the number of jobs can be run at the same time
+  #   exclude: 'gl1507, gl1510, gl1513'

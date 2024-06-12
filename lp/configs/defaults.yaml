@@ -1,0 +1,48 @@
+defaults:
+  # - override hydra/launcher: submitit_slurm
+  - _self_
+
+mode: 'puregpu'
+model_name: 'SAGE'
+checkpoint_folder: 'output/'
+load_checkpoint_folder: None
+dataset: ogbn-arxiv
+dataset_finetuned: False
+nodes_image_ratio: 0.1
+overlap_ratio: 0.1
+n_epochs: 30
+runs: 3
+log_steps: 1
+accum_iter_number: 1
+lr: 5e-4
+hidden_dim: 256
+num_layers: 3
+batch_size: 512
+exclude_target_degree: 0
+num_of_neighbors: 15
+full_neighbor: False
+inference_mode: 'train'
+preload_node_emb: True
+add_self_loop: False
+eval_dir: ''
+use_feature: 'original'
+feat: 'clip'
+use_concat: False
+no_eval: False
+lr_scheduler_step_size: 5
+lr_scheduler_gamma: 0.1
+patton_dir: /nfs/turbo/coe-dkoutra/jing/Next-GraphGPT/Patton/cloth-coview
+hydra:
+  job:
+    chdir: True
+  # launcher:
+  #   name: 'gnn'
+  #   timeout_min: 4320
+  #   cpus_per_task: 4
+  #   gres: 'gpu:1'
+  #   tasks_per_node: 1
+  #   mem_per_cpu: 10000
+  #   partition: 'spgpu'
+  #   account: 'dkoutra1'
+  #   array_parallelism: 3 # limit the number of jobs can be run at the same time
+  #   exclude: 'gl1507, gl1510, gl1513'
