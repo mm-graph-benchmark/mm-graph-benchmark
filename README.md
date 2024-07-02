@@ -154,3 +154,8 @@ evaluator = LinkPredictionEvaluator()
 input_dict = {'y_pred_pos': ..., 'y_pred_neg': ...} # get input_dict using the model you trained
 result = evaluator.eval(input_dict=input_dict)
 ```
+#########################
+## Raw Images
+```
+Raw images can be downloaded by using node_mapping.pt (which provides 1-1 mapping for node id and raw file id) for each dataset. A reference code for downloading can be found in download_img.py.
+```
