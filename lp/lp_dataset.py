@@ -33,12 +33,12 @@ class LinkPredictionDataset(object):
         edge_split_path = os.path.join(root, f'lp-edge-split-{self.edge_split_type}.pt')
         self.edge_split = torch.load(edge_split_path, map_location=self.device)
         feat_path = os.path.join(root, f'{self.feat_name}_feat.pt')
-        feat = torch.load(feat_path, map_location=self.device)
+        feat = torch.load(feat_path, map_location='cpu')
         self.num_nodes = feat.shape[0]
         self.graph = dgl.graph((
             self.edge_split['train']['source_node'],
             self.edge_split['train']['target_node'],
-        ), num_nodes=self.num_nodes).to(self.device)
+        ), num_nodes=self.num_nodes).to('cpu')
         self.graph.ndata['feat'] = feat
 
     def get_edge_split(self):

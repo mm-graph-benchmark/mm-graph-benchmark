@@ -96,13 +96,15 @@ def train(cfg, device, g, reverse_eids, seed_edges, model, edge_split, logger, r
     else:
         log.info("We sample the neighbor node of the target node to train the models. ")
         sampler = NeighborSampler([cfg.num_of_neighbors] * cfg.num_layers, prefetch_node_feats=['feat'])
+    log.info("We exclude the training target. ")
+    sampler = as_edge_prediction_sampler(
+        sampler, exclude="reverse_id", reverse_eids=reverse_eids, negative_sampler=negative_sampler.Uniform(1))
     use_uva = (cfg.mode == 'mixed')
     dataloader = DataLoader(
         g, seed_edges, sampler,
         device=device, batch_size=cfg.batch_size, shuffle=True,
         drop_last=False, num_workers=0, use_uva=use_uva)
     opt = torch.optim.Adam(model.parameters(), lr=cfg.lr)
-    # opt = torch.optim.SGD(model.parameters(), lr=cfg.lr)
     lr_scheduler = torch.optim.lr_scheduler.StepLR(
         opt, 
         step_size=cfg.lr_scheduler_step_size,
@@ -222,12 +224,12 @@ def train(cfg, device, g, reverse_eids, seed_edges, model, edge_split, logger, r
 @hydra.main(config_path=CONFIG_DIR, config_name="defaults", version_base='1.2')
 def main(cfg: DictConfig):
     log.info('Loading data')
-    data_path = './Multimodal-Graph-Completed-Graph' # replace this with the path where you save the datasets
+    data_path = '/nfs/turbo/coe-dkoutra/jing/Multimodal-Graph-Completed-Graph' # replace this with the path where you save the datasets
     dataset_name = 'sports-copurchase'
     feat_name = 't5vit'
     edge_split_type = 'hard'
     verbose = True
-    device = 'cpu' # use 'cuda' if GPU is available
+    device = ('cuda' if cfg.mode == 'puregpu' else 'cpu') # use 'cuda' if GPU is available
 
     dataset = LinkPredictionDataset(
         root=os.path.join(data_path, dataset_name),
