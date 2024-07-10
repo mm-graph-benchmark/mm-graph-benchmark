@@ -30,7 +30,7 @@ class LinkPredictionDataset(object):
             print(f'Edge split type: {self.edge_split_type}')
             print(f'Device: {self.device}')
         
-        edge_split_path = os.path.join(root, f'lp-edge-split-{self.edge_split_type}.pt')
+        edge_split_path = os.path.join(root, f'lp-edge-split.pt')
         self.edge_split = torch.load(edge_split_path, map_location=self.device)
         feat_path = os.path.join(root, f'{self.feat_name}_feat.pt')
         feat = torch.load(feat_path, map_location='cpu')
