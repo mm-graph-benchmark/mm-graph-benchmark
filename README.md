@@ -158,4 +158,9 @@ result = evaluator.eval(input_dict=input_dict)
 ## Raw Images
 
 Raw images can be downloaded by using `node_mapping.pt` (which provides 1-1 mapping for node id and raw file id) for each dataset. A reference code for downloading can be found in `download_img.py`.
-The products metadata can be obtained from: https://cseweb.ucsd.edu/~jmcauley/datasets.html#amazon_reviews and https://mengtingwan.github.io/data/goodreads.html
+The products metadata can be obtained from: https://cseweb.ucsd.edu/~jmcauley/datasets.html#amazon_reviews and https://mengtingwan.github.io/data/goodreads.html. The zipped image folder can be found here. 
+
+## Raw text
+
+Raw images can be downloaded by using `node_mapping.pt` (which provides 1-1 mapping for node id and raw file id) for each dataset. 
+The products metadata can be obtained from: https://cseweb.ucsd.edu/~jmcauley/datasets.html#amazon_reviews and https://mengtingwan.github.io/data/goodreads.html. The zipped text folder can be found here. 
