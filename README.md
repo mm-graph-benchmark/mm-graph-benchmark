@@ -158,9 +158,9 @@ result = evaluator.eval(input_dict=input_dict)
 ## Raw Images
 
 Raw images can be downloaded by using `node_mapping.pt` (which provides 1-1 mapping for node id and raw file id) for each dataset. A reference code for downloading can be found in `download_img.py`.
-The products metadata can be obtained from: https://cseweb.ucsd.edu/~jmcauley/datasets.html#amazon_reviews and https://mengtingwan.github.io/data/goodreads.html. The zipped folder can be found [here]([https://website-name.com](https://huggingface.co/datasets/mm-graph-org/mm-graph/tree/main)).
+The products metadata can be obtained from: https://cseweb.ucsd.edu/~jmcauley/datasets.html#amazon_reviews and https://mengtingwan.github.io/data/goodreads.html. The zipped folder can be found [here](https://huggingface.co/datasets/mm-graph-org/mm-graph/tree/main).
 
 ## Raw text
 
 Raw images can be downloaded by using `node_mapping.pt` (which provides 1-1 mapping for node id and raw file id) for each dataset. 
-The products metadata can be obtained from: https://cseweb.ucsd.edu/~jmcauley/datasets.html#amazon_reviews and https://mengtingwan.github.io/data/goodreads.html.  The zipped folder can be found [here]([https://website-name.com](https://huggingface.co/datasets/mm-graph-org/mm-graph/tree/main)).
+The products metadata can be obtained from: https://cseweb.ucsd.edu/~jmcauley/datasets.html#amazon_reviews and https://mengtingwan.github.io/data/goodreads.html.  The zipped folder can be found [here](https://huggingface.co/datasets/mm-graph-org/mm-graph/tree/main).
